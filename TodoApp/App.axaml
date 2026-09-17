@@ -3,13 +3,48 @@
              x:Class="TodoApp.App"
              xmlns:local="using:TodoApp"
              RequestedThemeVariant="Default">
-             <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+    <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
 
     <Application.DataTemplates>
         <local:ViewLocator />
     </Application.DataTemplates>
 
+    <Application.Resources>
+        <!--  These are re-usable Icon data. You can get the path data from svg-files for example  -->
+        <StreamGeometry x:Key="DeleteIconData">
+            M130.35,216 L132.45,216 L132.45,208 L130.35,208 L130.35,216 Z M134.55,216 L136.65,216 L136.65,208 L134.55,208 L134.55,216 Z M128.25,218 L138.75,218 L138.75,206 L128.25,206 L128.25,218 Z M130.35,204 L136.65,204 L136.65,202 L130.35,202 L130.35,204 Z M138.75,204 L138.75,200 L128.25,200 L128.25,204 L123,204 L123,206 L126.15,206 L126.15,220 L140.85,220 L140.85,206 L144,206 L144,204 L138.75,204 Z
+        </StreamGeometry>
+        <StreamGeometry x:Key="AcceptIconData">
+            M800,510a30,30,0,1,1,30-30A30,30,0,0,1,800,510Zm-16.986-23.235a3.484,3.484,0,0,1,0-4.9l1.766-1.756a3.185,3.185,0,0,1,4.574.051l3.12,3.237a1.592,1.592,0,0,0,2.311,0l15.9-16.39a3.187,3.187,0,0,1,4.6-.027L817,468.714a3.482,3.482,0,0,1,0,4.846l-21.109,21.451a3.185,3.185,0,0,1-4.552.03Z
+        </StreamGeometry>
+    </Application.Resources>
+
     <Application.Styles>
         <FluentTheme />
+
+        <!-- Some custom styles -->
+
+        <!-- Our header style -->
+        <Style Selector="TextBlock.h1">
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="Margin" Value="5" />
+        </Style>
+
+        <!-- ... other styles ... -->
+        <!--  We want our CheckBox to be stretched horizontally (the default is left-aligned)  -->
+        <Style Selector="CheckBox">
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+        </Style>
+
+        <!--  These styles add some useful feedback for the user  -->
+        <Style Selector="CheckBox:pointerover">
+            <Setter Property="Background" Value="{DynamicResource SystemAccentColorLight3}" />
+        </Style>
+
+        <!-- This style will make the icon semi-transparent, if a button is disabled -->
+        <Style Selector="Button:disabled PathIcon">
+            <Setter Property="Opacity" Value="0.4" />
+        </Style>
     </Application.Styles>
 </Application>
